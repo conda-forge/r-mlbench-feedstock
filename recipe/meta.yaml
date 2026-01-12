@@ -12,7 +12,7 @@ source:
   sha256: ea2ccf508594f935661e29854496f350f0b83680dd9a4d630dd3e3e03652951e
 
 build:
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,6 +28,7 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
   run:
