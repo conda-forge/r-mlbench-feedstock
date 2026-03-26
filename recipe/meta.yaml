@@ -1,4 +1,4 @@
-{% set version = "2.1-7" %}
+{% set version = "2.1-8" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/mlbench_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/mlbench/mlbench_{{ version }}.tar.gz
-  sha256: 7669e35715721d0dc412380747ba36f5a2fd63938851a289de815bbe91d8015c
+  sha256: 2ca1e337093df060c447c6f6cd342cc1ee4ccb48cdc4f20e605d45ac6c4659df
 
 build:
   number: 0
