@@ -3,12 +3,12 @@
 
 package:
   name: r-mlbench
-  version: {{ version|replace('-', '_') }}
+  version: "{{ version|replace('-', '_') }}"
 
 source:
   url:
-    - https://cran.r-project.org/src/contrib/mlbench_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/mlbench/mlbench_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/mlbench_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/mlbench/mlbench_{{ version }}.tar.gz
   sha256: b037f1aa66e873cb8c2669e72c1f5deefbe5af61d0b0ae2939e729f90f6e70cf
 
 build:
@@ -16,13 +16,17 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
     - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{ stdlib("c") }}                # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
